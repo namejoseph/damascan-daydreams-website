@@ -293,12 +293,54 @@ img {
 .hamburger-menu {
   display: none;
   cursor: pointer;
-  z-index: 1500; /* Increased z-index */
+  z-index: 1500;
   position: absolute;
-  right: var(--spacing-md);
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem; /* Slightly larger for better touch target */
+  right: 30px; /* Match close button right margin */
+  top: 6px; /* 24px header padding + 6px = 30px from viewport top, matching close button */
+  transform: none; /* Remove centering transform */
+  font-size: 1.5rem;
+  color: var(--text-color);
+  transition: opacity 0.2s ease;
+  
+  /* Match close button box dimensions for perfect alignment */
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom Thin Hamburger Icon */
+.hamburger-menu .fa-bars {
+  font-family: sans-serif; /* Reset font to avoid fa glyph */
+  position: relative;
+  width: 24px;
+  height: 2px; /* Middle line */
+  background-color: var(--text-color);
+  border-radius: 1px;
+  display: block;
+}
+
+.hamburger-menu .fa-bars::before,
+.hamburger-menu .fa-bars::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px; /* Top and Bottom lines */
+  background-color: var(--text-color);
+  border-radius: 1px;
+  left: 0;
+}
+
+.hamburger-menu .fa-bars::before {
+  top: -8px; /* Spacing for top line */
+}
+
+.hamburger-menu .fa-bars::after {
+  top: 8px; /* Spacing for bottom line */
+}
+
+.hamburger-menu:hover {
+  opacity: 0.7;
 }
 
 .menu-overlay {
@@ -306,69 +348,148 @@ img {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-color: var(--dark-bg);
-  z-index: 2000; /* Increased z-index to ensure visibility */
-  display: none;
+  height: 100vh; /* Use viewport height */
+  background-color: #000000; /* Pure black as per example image usually implies or very dark */
+  z-index: 2000;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: var(--spacing-xl);
-  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .menu-overlay.active {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
 .menu-overlay .site-title {
-  position: static;
-  transform: none;
-  margin-bottom: var(--spacing-xl);
-  font-size: 1.47rem; /* Match the main site title size */
+  display: none; /* Hide title in overlay to match the requested clean look */
 }
 
 .menu-overlay .site-nav {
+  display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
+  gap: 30px; /* Specific spacing for menu items */
+  margin-bottom: 0;
   width: 100%;
+  flex-grow: 1; /* Allow nav to take available space for centering */
+  justify-content: center; /* Center vertically */
 }
 
 .menu-overlay .nav-link {
-  font-size: 1rem; /* Slightly larger for mobile navigation */
+  font-size: 1rem; /* Reduced size (approx 80% of previous) */
+  letter-spacing: 3px;
+  font-weight: normal;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 1;
+}
+
+/* Specific styling for active link if needed, but example shows uniform look */
+.menu-overlay .nav-link.is-active:after {
+  display: none; /* Remove underline for mobile menu active state if preferred, or keep it subtle */
+}
+/* If we want to keep the active indicator, we can style it differently, but let's keep it clean first */
+
+.menu-overlay .social {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Wider gap for social icons */
+  width: 100%;
+  margin-top: auto; /* Push to bottom */
+  margin-bottom: var(--spacing-lg); /* Space from bottom edge */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 40px; /* Safe area from bottom */
+  margin-left: 0; /* Ensure no left margin from base styles */
 }
 
 .menu-overlay .social {
+  display: flex;
   justify-content: center;
+  gap: 30px; /* Wider gap for social icons */
   width: 100%;
-  margin-top: var(--spacing-lg);
+  margin-top: auto; /* Push to bottom */
+  margin-bottom: var(--spacing-lg); /* Space from bottom edge */
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 40px; /* Safe area from bottom */
+}
+
+.menu-overlay .social-link {
+  font-size: 1.1rem; /* Reduced size (approx 90% of previous) */
+  opacity: 1;
 }
 
 .menu-close {
   position: absolute;
-  top: var(--spacing-md);
-  right: var(--spacing-md);
-  font-size: 1.2rem; /* Slightly larger for better touch target */
+  top: 30px; /* Professional spacing from top */
+  right: 30px; /* Professional spacing from right */
+  font-size: 1.8rem; /* Large X */
   cursor: pointer;
-  z-index: 2100; /* Increased z-index to be above overlay */
+  z-index: 2100;
+  color: #ffffff;
+  transition: opacity 0.2s ease;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom Thin X Icon */
+.menu-close .fa-times {
+  font-family: sans-serif; /* Reset font to avoid fa glyph */
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+.menu-close .fa-times::before,
+.menu-close .fa-times::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px; /* Thinner line */
+  background-color: #ffffff;
+  border-radius: 1px;
+  top: 50%;
+  left: 50%;
+}
+.menu-close .fa-times::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.menu-close .fa-times::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.menu-close:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 1023px) {
   .header-inner {
-    flex-direction: column;
-    justify-content: center;
-    min-height: 70px;
+    flex-direction: row; /* Keep row for logo and hamburger */
+    justify-content: left; /* Logo centered */
+    align-items: center;
+    min-height: 80px;
     padding: var(--spacing-md);
     width: 100%;
+    position: relative;
   }
   
   .site-title {
-    margin-bottom: var(--spacing-sm);
-    white-space: normal; /* Allow wrapping */
-    width: 80%;
+    margin-bottom: 0; /* Reset margin */
+    width: auto;
     max-width: 80%;
+    font-size: 1.2rem; /* Adjusted for mobile header */
+    transform: translateY(-8px); /* Move up to align with hamburger */
   }
   
   .nav-container, .site-nav, .social {
@@ -376,12 +497,23 @@ img {
   }
   
   .hamburger-menu {
-    display: block; /* Show hamburger on mobile */
-    position: absolute;
-    top: 50%;
-    right: var(--spacing-md);
-    transform: translateY(-50%);
-    z-index: 1500;
+    display: flex; /* Show hamburger on mobile with flex centering */
+    right: 30px; /* Ensure consistency with base styles */
+  }
+
+  /* Allow platform links to wrap on mobile */
+  .platform-links {
+    flex-wrap: wrap;
+    white-space: normal;
+    gap: 10px;
+  }
+  
+  .platform-links a {
+    margin: 5px;
+  }
+  
+  .dot {
+    display: none; /* Hide dots when wrapping */
   }
 }
 
