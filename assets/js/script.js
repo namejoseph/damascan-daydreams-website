@@ -42,9 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Lightbox functionality
-  const galleryGrid = document.querySelector('.gallery-grid');
+  // Select all gallery grids
+  const galleryGrids = document.querySelectorAll('.gallery-grid');
   
-  if (galleryGrid) {
+  if (galleryGrids.length > 0) {
     // Create lightbox elements
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
@@ -53,8 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     lightboxContent.className = 'lightbox-content';
     
     const lightboxImg = document.createElement('img');
-    const lightboxCaption = document.createElement('p');
-    lightboxCaption.className = 'lightbox-caption';
     
     const closeBtn = document.createElement('span');
     closeBtn.className = 'lightbox-close';
@@ -69,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.innerHTML = '&#10095;';
     
     lightboxContent.appendChild(lightboxImg);
-    lightboxContent.appendChild(lightboxCaption);
     lightbox.appendChild(closeBtn);
     lightbox.appendChild(prevBtn);
     lightbox.appendChild(nextBtn);
@@ -79,9 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let images = [];
     
-    // Function to update images list (call this if images are loaded dynamically)
+    // Function to update images list from all grids
     const updateImages = () => {
-      images = Array.from(galleryGrid.querySelectorAll('img'));
+      images = [];
+      galleryGrids.forEach(grid => {
+        const gridImages = Array.from(grid.querySelectorAll('img'));
+        images = images.concat(gridImages);
+      });
     };
     
     // Initial update
@@ -95,15 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (index < 0) index = images.length - 1;
       
       currentIndex = index;
-      lightboxImg.src = images[currentIndex].src;
-      lightboxImg.alt = images[currentIndex].alt;
       
-      // Try to find caption from sibling or attribute
-      const captionText = images[currentIndex].getAttribute('data-caption') || 
-                          (images[currentIndex].nextElementSibling && images[currentIndex].nextElementSibling.classList.contains('photo-caption') ? images[currentIndex].nextElementSibling.textContent : '') ||
-                          images[currentIndex].alt;
-                          
-      lightboxCaption.textContent = captionText;
+      // Use data-full-src if available, otherwise fallback to src
+      const fullSrc = images[currentIndex].getAttribute('data-full-src');
+      lightboxImg.src = fullSrc || images[currentIndex].src;
+      lightboxImg.alt = images[currentIndex].alt;
       
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -115,14 +113,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     // Event delegation for gallery clicks
-    galleryGrid.addEventListener('click', (e) => {
-      if (e.target.tagName === 'IMG') {
-        updateImages(); // Refresh list in case of changes
-        const index = images.indexOf(e.target);
-        if (index !== -1) {
-          showImage(index);
+    galleryGrids.forEach(grid => {
+      grid.addEventListener('click', (e) => {
+        if (e.target.tagName === 'IMG') {
+          updateImages(); // Refresh list in case of changes
+          const index = images.indexOf(e.target);
+          if (index !== -1) {
+            showImage(index);
+          }
         }
-      }
+      });
     });
     
     // Lightbox controls
