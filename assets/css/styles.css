@@ -681,6 +681,7 @@ img {
   font-size: 0.7rem;
   color: #666666;
   margin-bottom: var(--spacing-xl);
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: normal;
