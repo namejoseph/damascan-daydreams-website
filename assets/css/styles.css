@@ -702,6 +702,14 @@ img {
   padding: 0 var(--spacing-md);
 }
 
+.bio-text p {
+  margin-bottom: var(--spacing-md);
+}
+
+.bio-text p:last-child {
+  margin-bottom: 0;
+}
+
 .bio-links {
   margin-top: var(--spacing-xl);
 }
