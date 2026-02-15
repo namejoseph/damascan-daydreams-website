@@ -6,6 +6,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shows | Damascan Daydreams</title>
   <meta name="description" content="Damascan Daydreams — Upcoming shows and performances." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shows | Damascan Daydreams" />
+  <meta property="og:description" content="Damascan Daydreams — Upcoming shows and performances." />
+  <meta property="og:url" content="https://damascandaydreams.com/shows/" />
+  <link rel="canonical" href="https://damascandaydreams.com/shows/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Damascan Daydreams" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Shows | Damascan Daydreams" />
+  <meta name="twitter:description" content="Damascan Daydreams — Upcoming shows and performances." />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Damascan Daydreams",
+    "url": "https://damascandaydreams.com",
+    "event": [
+      {
+        "@type": "MusicEvent",
+        "name": "Twin Peaks Night presented by The Nothing Song",
+        "startDate": "2026-02-24",
+        "location": {
+          "@type": "Place",
+          "name": "Hotel Vegas",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX"
+          }
+        },
+        "url": "https://do512.com/events/2026/2/24/twin-peaks-night-tickets",
+        "performer": {
+          "@type": "MusicGroup",
+          "name": "Damascan Daydreams"
+        }
+      },
+      {
+        "@type": "MusicEvent",
+        "name": "Dreamwave Odyssey",
+        "startDate": "2026-03-07",
+        "location": {
+          "@type": "Place",
+          "name": "The 13th Floor",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX"
+          }
+        },
+        "url": "https://dreamwaveodyssey.com/",
+        "performer": {
+          "@type": "MusicGroup",
+          "name": "Damascan Daydreams"
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <script src="../assets/js/script.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -56,63 +121,169 @@
       <section class="shows-list">
         <h2 class="section-heading">UPCOMING</h2>
 
-        <p>
-          TUE 2/24/26 • Hotel Vegas • Austin, TX<br>
-          Twin Peaks Night presented by The Nothing Song
-        </p>
+        <div class="shows-upcoming">
+          <div class="show-row">
+            <span class="show-date">TUE 2/24/26</span>
+            <span class="show-info">
+              Hotel Vegas • Austin, TX<br>
+              <span class="show-event">Twin Peaks Night presented by The Nothing Song</span>
+            </span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2026/2/24/twin-peaks-night-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
 
-        <h2 class="section-heading">PAST SHOWS</h2>
+          <div class="show-row">
+            <span class="show-date">SAT 3/7/26</span>
+            <span class="show-info">
+              The 13th Floor • Austin, TX<br>
+              <span class="show-event">Dreamwave Odyssey w/ Computer Kill, Holy Wire &amp; more</span>
+            </span>
+            <span class="show-link">
+              <a href="https://dreamwaveodyssey.com/" target="_blank" rel="noopener noreferrer">FREE WITH RSVP</a>
+            </span>
+          </div>
+        </div>
 
-        <p>
-          SAT 1/10/26 • Elysium • Austin, TX<br>
-          FREE WEEK
-        </p>
-        <p>
-          WED 12/17/25 • Hotel Vegas • Austin, TX<br>
-          Starfire Presents Show
-        </p>
-        <p>
-          SAT 10/25/25 • Empire Control Room • Austin, TX<br>
-          Portishead Tribute Set
-        </p>
-        <p>
-          SAT 9/20/25 • The 13th Floor • Austin, TX<br>
-          "From the Heavens" Single Release
-        </p>
-        <p>
-          SAT 6/7/25 • Come and Take It Live • Austin, TX<br>
-          HURRIYAH FESTIVAL 2025
-        </p>
-        <p>
-          FRI 5/9/25 • Swan Dive • Austin, TX
-        </p>
-        <p>
-          SUN 2/2/25 • Sahara Lounge • Austin, TX
-        </p>
-        <p>
-          SAT 12/14/24 • dadaLab • Austin, TX<br>
-          $3 Shows Benefit for LoveHub ATX
-        </p>
-        <p>
-          FRI 11/15/24 • dadaLab • Austin, TX
-        </p>
-        <p>
-          SUN 11/10/24 • Hotel Vegas • Austin, TX
-        </p>
-        <p>
-          SUN 10/13/24 • BATCH • Austin, TX
-        </p>
-        <p>
-          FRI 8/16/24 • dadaLab • Austin, TX<br>
-          Archangel EP Release
-        </p>
-        <p>
-          MON 5/29/23 • Gnar Bar • Austin, TX<br>
-          EDFEMME Fest
-        </p>
-        <p>
-          THU 7/13/22 • Carousel Lounge • Austin, TX
-        </p>
+        <h2 class="section-heading shows-past-heading">PAST SHOWS</h2>
+
+        <div class="shows-past">
+          <div class="show-row">
+            <span class="show-date">SAT 1/10/26</span>
+            <span class="show-info">
+              Elysium • Austin, TX<br>
+              <span class="show-event">FREE WEEK</span>
+            </span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2026/1/10/lauren-lakis-cold-body-club-egaux-sells-damascan-daydreams-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">WED 12/17/25</span>
+            <span class="show-info">
+              Hotel Vegas • Austin, TX<br>
+              <span class="show-event">Starfire Presents Show</span>
+            </span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2025/12/17/damascan-daydreams-fak3-5miles-stardust-vinyl-jachen-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">SAT 10/25/25</span>
+            <span class="show-info">
+              Empire Control Room • Austin, TX<br>
+              <span class="show-event">Portishead Tribute Set</span>
+            </span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2025/10/25/paranoid-androids-kid-a-25th-anniversary-in-the-control-room-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">SAT 9/20/25</span>
+            <span class="show-info">
+              The 13th Floor • Austin, TX<br>
+              <span class="show-event">"From the Heavens" Single Release</span>
+            </span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2025/9/20/from-the-heavens-a-night-of-ethereal-dream-pop-cosmic-electronica-and-alternative-rock-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">SAT 6/7/25</span>
+            <span class="show-info">
+              Come and Take It Live • Austin, TX<br>
+              <span class="show-event">HURRIYAH FESTIVAL 2025</span>
+            </span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2025/6/7/hurriyah-festival-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">FRI 5/9/25</span>
+            <span class="show-info">Swan Dive • Austin, TX</span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2025/5/9/gleaming-new-romance-ep-release-show-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">SUN 2/2/25</span>
+            <span class="show-info">Sahara Lounge • Austin, TX</span>
+            <span class="show-link"></span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">SAT 12/14/24</span>
+            <span class="show-info">
+              dadaLab • Austin, TX<br>
+              <span class="show-event">$3 Shows Benefit for LoveHub ATX</span>
+            </span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2024/12/14/lovehub-atx-at-dadalab-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">FRI 11/15/24</span>
+            <span class="show-info">dadaLab • Austin, TX</span>
+            <span class="show-link"></span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">SUN 11/10/24</span>
+            <span class="show-info">Hotel Vegas • Austin, TX</span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2024/11/10/carrellee-nemion-damascan-daydreams-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">SUN 10/13/24</span>
+            <span class="show-info">BATCH • Austin, TX</span>
+            <span class="show-link">
+              <a href="https://do512.com/events/2024/10/13/art-in-atx-halloween-market-pumpkin-painting-tickets" target="_blank"
+                rel="noopener noreferrer">DETAILS</a>
+            </span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">FRI 8/16/24</span>
+            <span class="show-info">
+              dadaLab • Austin, TX<br>
+              <span class="show-event">Archangel EP Release</span>
+            </span>
+            <span class="show-link"></span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">MON 5/29/23</span>
+            <span class="show-info">
+              Gnar Bar • Austin, TX<br>
+              <span class="show-event">EDFEMME Fest</span>
+            </span>
+            <span class="show-link"></span>
+          </div>
+
+          <div class="show-row">
+            <span class="show-date">THU 7/13/22</span>
+            <span class="show-info">Carousel Lounge • Austin, TX</span>
+            <span class="show-link"></span>
+          </div>
+        </div>
       </section>
 
       <footer class="site-footer">

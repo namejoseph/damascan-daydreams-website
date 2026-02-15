@@ -37,8 +37,16 @@ p {
 
 a {
   color: var(--link-color);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition: color 0.2s ease;
+}
+
+.site-header a,
+.site-footer a,
+.btn,
+.button {
+  text-decoration: none;
 }
 
 a:hover {
@@ -403,15 +411,15 @@ img {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Use viewport height */
-  background-color: #000000; /* Pure black as per example image usually implies or very dark */
+  height: 100dvh;
+  background-color: #000000;
   z-index: 2000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg) var(--spacing-xl);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -540,11 +548,13 @@ img {
   }
   
   .site-title {
-    margin-bottom: 0; /* Reset margin */
+    margin-bottom: 0;
     width: auto;
-    max-width: 80%;
-    font-size: 1.2rem; /* Adjusted for mobile header */
-    transform: translateY(-8px); /* Move up to align with hamburger */
+    max-width: calc(100% - 60px);
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   
   .nav-container, .site-nav, .social {
@@ -575,10 +585,9 @@ img {
 /* Additional responsive styles for very small screens */
 @media (max-width: 480px) {
   .site-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     letter-spacing: 2px;
-    width: 90%;
-    max-width: 90%;
+    max-width: calc(100% - 50px);
   }
   
   .header-inner {
@@ -645,6 +654,76 @@ img {
   letter-spacing: 1px;
   line-height: 1.8;
   font-weight: 100;
+}
+
+.shows-past-heading {
+  margin-top: var(--spacing-xl);
+}
+
+.show-row {
+  font-size: 0.79rem;
+  letter-spacing: 1px;
+  line-height: 1.8;
+  font-weight: 100;
+  color: #999999;
+  text-align: center;
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.show-row:last-child {
+  border-bottom: none;
+}
+
+.show-date {
+  color: #ffffff;
+  display: block;
+}
+
+.show-info {
+  display: block;
+  color: #ffffff;
+}
+
+.show-event {
+  color: #999999;
+}
+
+.show-link {
+  display: block;
+}
+
+.shows-upcoming .show-date {
+  color: #ffffff;
+}
+
+.shows-upcoming .show-event {
+  color: #999999;
+}
+
+.shows-upcoming a {
+  color: #ffffff;
+}
+
+@media (min-width: 1024px) {
+  .show-row {
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    gap: var(--spacing-lg);
+    text-align: left;
+    align-items: start;
+  }
+
+  .show-date,
+  .show-info,
+  .show-link {
+    display: inline;
+  }
+
+  .show-link {
+    text-align: right;
+    white-space: nowrap;
+  }
 }
 
 /* Bio Page */
