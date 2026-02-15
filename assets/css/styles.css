@@ -73,9 +73,12 @@ img {
 }
 
 /* Header */
+:root {
+  --header-h-mobile: 70px;
+}
+
 .site-header {
   padding: var(--spacing-lg) 0;
-  /* Removed border-bottom */
   margin-bottom: var(--spacing-xl);
   position: relative;
   width: 100%;
@@ -95,12 +98,12 @@ img {
 }
 
 .site-title {
-  font-size: 1.47rem; /* Set to 28px (1.47 * 19px) */
+  font-size: 1.47rem;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 3px;
   text-align: center;
-  white-space: normal; /* Allow word wrap */
+  white-space: normal;
   margin-bottom: var(--spacing-md);
   width: auto;
   max-width: 70%;
@@ -302,19 +305,14 @@ img {
   display: none;
   cursor: pointer;
   z-index: 1500;
-  position: absolute;
-  right: 30px; /* Match close button right margin */
-  top: 6px; /* 24px header padding + 6px = 30px from viewport top, matching close button */
-  transform: none; /* Remove centering transform */
   font-size: 1.5rem;
   color: var(--text-color);
   transition: opacity 0.2s ease;
-  
-  /* Match close button box dimensions for perfect alignment */
   width: 40px;
   height: 40px;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 /* Gallery Styles */
@@ -406,46 +404,54 @@ img {
   opacity: 0.7;
 }
 
+/* Mobile Menu Overlay */
 .menu-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100dvh;
-  background-color: #000000;
+  inset: 0;
   z-index: 2000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: var(--spacing-lg) var(--spacing-xl);
+  background-color: #000000;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: grid;
+  grid-template-rows: var(--header-h-mobile) 1fr;
 }
 
 .menu-overlay.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
-.menu-overlay .site-title {
-  display: none; /* Hide title in overlay to match the requested clean look */
+.menu-header {
+  height: var(--header-h-mobile);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--spacing-md);
 }
 
-.menu-overlay .site-nav {
+.menu-inner {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* Specific spacing for menu items */
-  margin-bottom: 0;
-  width: 100%;
-  flex-grow: 1; /* Allow nav to take available space for centering */
-  justify-content: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+  padding: var(--spacing-md);
 }
 
-.menu-overlay .nav-link {
-  font-size: 1rem; /* Reduced size (approx 80% of previous) */
+.menu-inner .site-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0;
+  width: auto;
+}
+
+.menu-inner .nav-link {
+  font-size: 1rem;
   letter-spacing: 3px;
   font-weight: normal;
   color: #ffffff;
@@ -453,48 +459,24 @@ img {
   opacity: 1;
 }
 
-/* Specific styling for active link if needed, but example shows uniform look */
-.menu-overlay .nav-link.is-active:after {
-  display: none; /* Remove underline for mobile menu active state if preferred, or keep it subtle */
+.menu-inner .nav-link.is-active:after {
+  display: none;
 }
-/* If we want to keep the active indicator, we can style it differently, but let's keep it clean first */
 
-.menu-overlay .social {
+.menu-inner .social {
   display: flex;
   justify-content: center;
-  gap: 30px; /* Wider gap for social icons */
-  width: 100%;
-  margin-top: auto; /* Push to bottom */
-  margin-bottom: var(--spacing-lg); /* Space from bottom edge */
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding-bottom: 40px; /* Safe area from bottom */
-  margin-left: 0; /* Ensure no left margin from base styles */
+  gap: 30px;
+  width: auto;
+  margin: 0;
 }
 
-.menu-overlay .social {
-  display: flex;
-  justify-content: center;
-  gap: 30px; /* Wider gap for social icons */
-  width: 100%;
-  margin-top: auto; /* Push to bottom */
-  margin-bottom: var(--spacing-lg); /* Space from bottom edge */
-  position: absolute;
-  bottom: 0;
-  padding-bottom: 40px; /* Safe area from bottom */
-}
-
-.menu-overlay .social-link {
-  font-size: 1.1rem; /* Reduced size (approx 90% of previous) */
+.menu-inner .social-link {
+  font-size: 1.1rem;
   opacity: 1;
 }
 
 .menu-close {
-  position: absolute;
-  top: 30px; /* Professional spacing from top */
-  right: 30px; /* Professional spacing from right */
-  font-size: 1.8rem; /* Large X */
   cursor: pointer;
   z-index: 2100;
   color: #ffffff;
@@ -505,11 +487,12 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 /* Custom Thin X Icon */
 .menu-close .fa-times {
-  font-family: sans-serif; /* Reset font to avoid fa glyph */
+  font-family: sans-serif;
   position: relative;
   width: 24px;
   height: 24px;
@@ -519,7 +502,7 @@ img {
   content: '';
   position: absolute;
   width: 24px;
-  height: 2px; /* Thinner line */
+  height: 2px;
   background-color: #ffffff;
   border-radius: 1px;
   top: 50%;
@@ -537,33 +520,34 @@ img {
 }
 
 @media (max-width: 1023px) {
+  .site-header {
+    padding: 0;
+    margin-bottom: var(--spacing-md);
+  }
+
   .header-inner {
-    flex-direction: row; /* Keep row for logo and hamburger */
-    justify-content: left; /* Logo centered */
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    min-height: 80px;
-    padding: var(--spacing-md);
-    width: 100%;
-    position: relative;
+    height: var(--header-h-mobile);
+    padding: 0 var(--spacing-md);
   }
   
   .site-title {
     margin-bottom: 0;
-    width: auto;
-    max-width: calc(100% - 60px);
-    font-size: 1.2rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: clamp(0.7rem, 3.2vw, 1.2rem);
+    letter-spacing: 2px;
     white-space: nowrap;
+    min-width: 0;
+    max-width: calc(100% - 50px);
   }
   
   .nav-container, .site-nav, .social {
-    display: none; /* Hide regular navigation on mobile */
+    display: none;
   }
   
   .hamburger-menu {
-    display: flex; /* Show hamburger on mobile with flex centering */
-    right: 30px; /* Ensure consistency with base styles */
+    display: flex;
   }
 
   /* Allow platform links to wrap on mobile */
@@ -578,20 +562,7 @@ img {
   }
   
   .dot {
-    display: none; /* Hide dots when wrapping */
-  }
-}
-
-/* Additional responsive styles for very small screens */
-@media (max-width: 480px) {
-  .site-title {
-    font-size: 1rem;
-    letter-spacing: 2px;
-    max-width: calc(100% - 50px);
-  }
-  
-  .header-inner {
-    padding: var(--spacing-sm);
+    display: none;
   }
 }
 
