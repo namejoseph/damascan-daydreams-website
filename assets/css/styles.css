@@ -577,7 +577,7 @@ img {
 /* Video Section Styles */
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
   max-width: 1000px;
@@ -593,6 +593,25 @@ img {
   align-items: center;
   width: 100%;
   max-width: 560px;
+}
+
+/* First video in a section spans the full row, matching the combined
+   width of the two side-by-side videos below it. */
+.video-grid .video-item:first-child {
+  grid-column: 1 / -1;
+  max-width: none;
+}
+
+/* On narrow screens, stack everything in a single column. */
+@media (max-width: 700px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-grid .video-item:first-child {
+    grid-column: auto;
+    max-width: 560px;
+  }
 }
 
 .video-container {
