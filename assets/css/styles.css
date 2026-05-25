@@ -650,6 +650,15 @@ img {
   margin-top: var(--spacing-xl);
 }
 
+.shows-empty {
+  text-align: center;
+  font-size: 0.79rem;
+  letter-spacing: 1px;
+  color: #999999;
+  padding: var(--spacing-md) 0;
+  margin: 0;
+}
+
 .show-row {
   font-size: 0.79rem;
   letter-spacing: 1px;
